@@ -71,6 +71,13 @@ body {
 }
 
 .modal-header {
-    background-color: #CDEC97! important;
+    background-color: #96e60b! important;
 }
 
+.modal-footer {
+    background-color: #96e60b! important;
+}
+
+.transformar:hover{
+    transform: scale(1.3);
+}
