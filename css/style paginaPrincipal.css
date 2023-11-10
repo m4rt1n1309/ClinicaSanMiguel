@@ -14,3 +14,7 @@ body {
     
 }
 
+.transformar:hover{
+    transform: scale(1.3);
+}
+
