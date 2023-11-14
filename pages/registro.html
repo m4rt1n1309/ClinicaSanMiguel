@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
     <title>SAN MIGUEL CLINICA MEDICA</title>
 </head>
 <body>
-    ------------ NAV BAR!--------------- 
+    <!------------ NAV BAR!--------------->
   <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
@@ -60,32 +60,32 @@
 <!-- Modal -->
 <div class="modal fade" id="modalProfesional" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content" >
       <div class="modal-header">
         <h1 class="modal-title" id="exampleModalLabel">Registro Profesional</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="validarUsuario">
           <label class="text-black fs-3">DNI</label>
-          <input class="form-control w-50" type="number">
+          <input class="form-control w-50" type="number" id="dni">
           <label class="text-black fs-3">Nombre</label>
-          <input class="form-control w-50" type="text">
+          <input class="form-control w-50" type="text" id="nombre">
           <label class="text-black fs-3">Apellido</label>
-          <input class="form-control w-50" type="text">
+          <input class="form-control w-50" type="text" id="apellido">
           <label class="text-black fs-3">Especialidad</label>
-          <input class="form-control w-50" type="text">
+          <input class="form-control w-50" type="text" id="especialidad">
           <label class="text-black fs-3">Email</label>
-          <input class="form-control w-50" type="email">
+          <input class="form-control w-50" type="email" id="email">
           <label class="text-black fs-3">Contraseña</label>
-          <input class="form-control w-50" type="password">
+          <input class="form-control w-50" type="password" id="password">
           <label class="text-black fs-3">Confirmar Contraseña</label>
-          <input class="form-control w-50" type="password">
+          <input class="form-control w-50" type="password" id="confirmarPassword">
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Confirmar</button>
+        <button type="button" class="btn btn-primary" id="validarRegistro">Confirmar</button>
       </div>
     </div>
   </div>
@@ -118,8 +118,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
+        <button type="submit" class="btn btn-primary">Confirmar</button>
       </div>
     </div>
   </div>
@@ -217,5 +217,8 @@
   </div>
 </footer>
 <!-------------- FIN DE FOOTER!----------------->
+
+<script src="../js/registro.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
