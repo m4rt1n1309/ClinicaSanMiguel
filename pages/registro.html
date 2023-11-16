@@ -67,14 +67,22 @@
       </div>
       <div class="modal-body">
         <form id="validarUsuario">
-          <label class="text-black fs-3">DNI</label>
-          <input class="form-control w-50" type="number" id="dni">
+          <label class="text-black fs-3">DNI <span class="parentesisDNI">(ingresar sin puntos)</span></label>
+          <input class="form-control w-50" type="number" id="dni" oninput="this.value = this.value.replace(/[^\d]/g, '');">
           <label class="text-black fs-3">Nombre</label>
           <input class="form-control w-50" type="text" id="nombre">
           <label class="text-black fs-3">Apellido</label>
           <input class="form-control w-50" type="text" id="apellido">
-          <label class="text-black fs-3">Especialidad</label>
-          <input class="form-control w-50" type="text" id="especialidad">
+          <label class="text-black fs-3" for="listaEspecialidad">Especialidad</label>
+          <select name="listaEspecialidad" id="listaEspecialidad" class="form-control w-50">
+          <option disabled selected="">Seleccione una opción:</option>
+          <option value="Cardiología">Cardiología</option>
+          <option value="Oftalmología">Oftalmología</option>
+          <option value="Traumatología">Traumatología</option>
+          <option value="Endocrinología">Endocrinología</option>
+          <option value="Otra">Otra</option>
+          </select>
+          <!-- <input class="form-control w-50" type="text" id="especialidad"> -->
           <label class="text-black fs-3">Email</label>
           <input class="form-control w-50" type="email" id="email">
           <label class="text-black fs-3">Contraseña</label>
@@ -85,7 +93,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" id="validarRegistro">Confirmar</button>
+        <button type="button" class="btn btn-success" id="validarRegistro">Confirmar</button>
       </div>
     </div>
   </div>
@@ -100,26 +108,34 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
-          <label class="text-black fs-3">DNI</label>
-          <input class="form-control w-50" type="number">
+        <form id="validarPaciente">
+          <label class="text-black fs-3">DNI <span class="parentesisDNI">(ingresar sin puntos)</span></label>
+          <input class="form-control w-50" type="number" oninput="this.value = this.value.replace(/[^\d]/g, '');" id="dniPaciente">
           <label class="text-black fs-3">Nombre</label>
-          <input class="form-control w-50" type="text">
+          <input class="form-control w-50" type="text" id="nombrePaciente">
           <label class="text-black fs-3">Apellido</label>
-          <input class="form-control w-50" type="text">
+          <input class="form-control w-50" type="text" id="apellidoPaciente">
           <label class="text-black fs-3">Obra Social</label>
-          <input class="form-control w-50" type="text">
+          <select name="listaObraSocial" id="obraSocial" class="form-control w-50">
+            <option disabled selected="">Seleccione una opción:</option>
+            <option value="Osde">Osde</option>
+            <option value="Prensa">Prensa</option>
+            <option value="Boreal">Boreal</option>
+            <option value="Pami">Pami</option>
+            <option value="Otra">Otra</option>
+            </select>
+          <!-- <input class="form-control w-50" type="text"> -->
           <label class="text-black fs-3">Email</label>
-          <input class="form-control w-50" type="email">
+          <input class="form-control w-50" type="email" id="emailPaciente">
           <label class="text-black fs-3">Contraseña</label>
-          <input class="form-control w-50" type="password">
+          <input class="form-control w-50" type="password" id="passwordPaciente">
           <label class="text-black fs-3">Confirmar Contraseña</label>
-          <input class="form-control w-50" type="password">
+          <input class="form-control w-50" type="password" id="confirmarPasswordPaciente">
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
-        <button type="submit" class="btn btn-primary">Confirmar</button>
+        <button type="button" class="btn btn-success" id="validarRegistroPaciente">Confirmar</button>
       </div>
     </div>
   </div>
