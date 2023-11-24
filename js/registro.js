@@ -1,13 +1,14 @@
 //Funcionalidad del Registro de Medicos
 
 class Usuario {
-    constructor(dni, nombre, apellido, especialidad, email, password){
+    constructor(dni, nombre, apellido, especialidad, email, password, imagen){
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.especialidad = especialidad;
         this.email = email;
         this.password = password;
+        this.imagen = imagen;
     }
 }
 
@@ -33,6 +34,7 @@ function validarRegistro(e){
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
     const confirmarPassword = document.querySelector("#confirmarPassword").value;
+    const inputImagen = document.querySelector("#imagen");
     const validarEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     const resultadoValidacion = validarEmail.test(email);
@@ -78,15 +80,43 @@ function validarRegistro(e){
     };
 
     
+    const imagenFile = inputImagen.files[0];
 
-    const newUser = new Usuario(dni, nombre, apellido, listaEspecialidad, email, password);
+    if (!imagenFile) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debes seleccionar una imagen',
+        });
+        return;
+    }
 
-    usuariosProfesionales.push(newUser);
+    // Usa FileReader para leer la imagen como una cadena base64
+    const reader = new FileReader();
 
-    localStorage.setItem("usuariosProfesionales", JSON.stringify(usuariosProfesionales));
+    reader.onload = function (e) {
+        const imagenBase64 = e.target.result;
+        const newUser = new Usuario(dni, nombre, apellido, listaEspecialidad, email, password, imagenBase64);
+        usuariosProfesionales.push(newUser);
+        localStorage.setItem("usuariosProfesionales", JSON.stringify(usuariosProfesionales));
+        validarUsuario.reset();
+    };
 
-    validarUsuario.reset();
+    reader.readAsDataURL(imagenFile);
 }
+
+    // const newUser = new Usuario(dni, nombre, apellido, listaEspecialidad, email, password, imagen);
+
+    // usuariosProfesionales.push(newUser);
+
+    // localStorage.setItem("usuariosProfesionales", JSON.stringify(usuariosProfesionales));
+
+    // validarUsuario.reset();
+
+
+
+
+
 
 
 
@@ -165,5 +195,21 @@ function validarRegistroPaciente(e) {
         usuariosPacientes.push(newUserPaciente);
         localStorage.setItem("usuariosPacientes", JSON.stringify(usuariosPacientes));
         validarPaciente.reset();
+    }
+}
+
+function mostrarVistaPrevia() {
+    var input = document.getElementById('imagen');
+    var preview = document.getElementById('preview');
+    
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        }
+
+        reader.readAsDataURL(input.files[0]);
     }
 }
