@@ -1,0 +1,12 @@
+.turnoHorario-btn{
+    margin: 5px;
+    border-radius: 15px;
+    border: none;
+    background-color:white ;
+}
+
+.turnoHorario-btn:hover{
+    transform: scale(1.20);
+    background-color: rgb(195, 235, 176);
+    color: rgb(0, 0, 87);
+}

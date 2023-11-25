@@ -14,6 +14,7 @@
         crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="/css/style paginaPrincipal.css">
+    <link rel="stylesheet" href="/css/turnoPaciente.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100&family=Roboto&display=swap"
@@ -76,9 +77,10 @@
             <div style="width: 50%;" class="m-3">
                 <label >Especialidades:</label>
                 <select id="especialidades" onchange="cargarMedicos()" class="form-control  w-85 ">
-                    <option value="cardiologia">Cardiología</option>
+                    <option value="Cardiología">Cardiología</option>
+                    <option value="Oftalmología">Oftalmología</option>
                     <option value="Traumatología">Traumatología</option>
-                    <option value="neurologia">Neurología</option>
+                    <option value="Endocrinología">Endocrinología</option>
                     <!-- Puedes agregar más opciones según sea necesario -->
                 </select>
             </div>
@@ -95,27 +97,27 @@
             <h2 class="w-50">Disponible</h2> 
             <input id="fechaTurno" type="date" onchange="cargarHorarios()">   
 
-        <div id="horarioTurnos" >
-            <!-- aqui irian los horarios en pequeños divs -->
+            <div id="horarioTurnos" style="display:flex; flex-wrap:wrap; width: 200px; height: 200px;margin: 30px;" >
+                <!-- aqui irian los horarios en pequeños divs -->
 
-        </div>
+            </div>
 
-            <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column; ">
                 <label>Motivo de la consulta:</label>
-                <textarea id="" cols="80" rows="10"></textarea>
+                <textarea id="motivo" cols="80" rows="10"></textarea>
             </div>
         </div>
 
-
+        <p id="turnoSeleccionado"></p>
         <div style="display: inline; margin: 20px;">
-            <button>Confirmar</button>
+            <button onclick="validarDatos()">Confirmar</button>
             <button>Cancelar</button>
         </div>
 
     </div>
     <hr>
 
-    <div id="pruebaM" style="margin: 50px;">
+    <div id="pruebaM"  style="margin: 50px;">
         Turnos pendientes:
 
     </div>
