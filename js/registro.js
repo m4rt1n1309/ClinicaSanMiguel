@@ -9,6 +9,8 @@ class Usuario {
         this.email = email;
         this.password = password;
         this.imagen = imagen;
+        this.dias = ["lunes", "martes", "miercoles", "jueves", "viernes"];
+        this.horario = ["9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","16:00","16:30","17:00","17:30","18:00"];
     }
 }
 
@@ -41,6 +43,11 @@ function validarRegistro(e){
 
     const validarUsuario = document.querySelector("#validarUsuario");
 
+    // Buscar si el correo ya existe en el localStorage
+    const usuarioExistente = usuariosProfesionales.find((usuario) => usuario.email === email);
+
+    const usuarioExistenteDni = usuariosProfesionales.find((usuario) => usuario.dni === dni);
+
     if (dni === "" || nombre === "" || apellido === "" || listaEspecialidad === "" ||  email === "" || password === "" || confirmarPassword === ""){
         Swal.fire({
             icon: 'error',
@@ -69,7 +76,22 @@ function validarRegistro(e){
             text: 'Las contraseñas deben ser iguales',
           })
         return; 
-    } else {
+    }   else if (usuarioExistente){
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Ya existe un usuario registrado con ese email',
+              })
+            return; 
+    }   else if (usuarioExistenteDni){
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Ya existe un usuario registrado con ese DNI',
+          })
+        return;
+    }  
+        else {
         Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -158,6 +180,12 @@ function validarRegistroPaciente(e) {
     const resultadoValidacion = validarEmail.test(emailPaciente);
 
     const validarPaciente = document.getElementById("validarPaciente");
+    
+    // Buscar si el DNI ya existe en el localStorage
+    const dniExistente = usuariosPacientes.find((usuario) => usuario.dniPaciente === dniPaciente);
+
+    // Buscar si el correo ya existe en el localStorage
+    const emailExistente = usuariosPacientes.find((usuario) => usuario.emailPaciente === emailPaciente);
 
     if (dniPaciente === "" || nombrePaciente === "" || apellidoPaciente === "" || obraSocial === "" ||  emailPaciente === "" || passwordPaciente === "" || confirmarPasswordPaciente === ""){
         Swal.fire({
@@ -182,6 +210,18 @@ function validarRegistroPaciente(e) {
             icon: 'error',
             title: 'Error',
             text: 'Las contraseñas deben ser iguales',
+        });
+    } else if (dniExistente) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Ya existe un usuario registrado con ese DNI',
+        });
+    } else if (emailExistente) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Ya existe un usuario registrado con ese correo',
         });
     } else {
         Swal.fire({
