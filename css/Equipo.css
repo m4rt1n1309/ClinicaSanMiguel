@@ -1,0 +1,126 @@
+body {
+  background-image: url(/assets/img/Fondo\ principal.jpg);
+background-size: cover;
+  font-family: 'DM Sans', sans-serif;
+font-family: 'Roboto', sans-serif;
+
+
+
+}
+
+
+
+footer {
+  width: 100%;
+  margin-top: 700px;
+}
+
+/* Estilos para las columnas */
+.columna {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.columna h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.navbar {
+  background-color: #CDEC97! important;
+}
+.dropdown-menu{
+  background-color: #CDEC97;
+}
+
+
+
+
+
+.Nuestro_equipo_de_trabajo {
+  margin-top: 100px;
+  width: 100%;
+ 
+}
+
+.Nuestro_equipo_de_trabajo p{
+  padding: 40px;
+  margin: 0px 0px 16px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.blog {
+  padding: 80px 0;
+  text-align: center;
+}
+.blog-content {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+.blog-1 {
+  padding: 40px 15px;
+  text-align: center;
+  
+
+ 
+}
+.blog-1 img{
+  width: 150px;
+  border-radius: 100%;
+  
+  
+}
+.blog-1 h2{
+  font-size: 20px;
+  color:black
+
+}
+
+@media(min-width: 1200px){
+  .Nuestro_equipo_de_trabajo h2{
+      font-size: 3rem;
+  font-size: bold;
+  margin-top: 122px;
+  margin: 106px 50px 0px;
+  text-align: left;
+  }
+  .Nuestro_equipo_de_trabajo p{
+      padding: 60px;
+      margin: 0px 0px 16px;
+      text-align: left;
+      font-size: 25px;
+  }
+      .blog-content {
+          height: 25px;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          justify-content:space-between;
+        }
+  .blog-1 img{
+      width: 200px;
+      border-radius: 100%;
+      
+  }
+}
+
+/* Estilos para dispositivos pequeños */
+@media (max-width: 768px) {
+  .columna {
+      flex-basis: 100%;
+  }
+  .contenedor-Historia{
+  
+    margin-top: 100px;
+  }
+}
+

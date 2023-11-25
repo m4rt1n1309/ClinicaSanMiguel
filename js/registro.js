@@ -1,13 +1,16 @@
 //Funcionalidad del Registro de Medicos
 
 class Usuario {
-    constructor(dni, nombre, apellido, especialidad, email, password){
+    constructor(dni, nombre, apellido, especialidad, email, password, imagen){
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.especialidad = especialidad;
         this.email = email;
         this.password = password;
+        this.imagen = imagen;
+        this.dias = ["lunes", "martes", "miercoles", "jueves", "viernes"];
+        this.horario = ["9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","16:00","16:30","17:00","17:30","18:00"];
     }
 }
 
@@ -33,11 +36,17 @@ function validarRegistro(e){
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
     const confirmarPassword = document.querySelector("#confirmarPassword").value;
+    const inputImagen = document.querySelector("#imagen");
     const validarEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     const resultadoValidacion = validarEmail.test(email);
 
     const validarUsuario = document.querySelector("#validarUsuario");
+
+    // Buscar si el correo ya existe en el localStorage
+    const usuarioExistente = usuariosProfesionales.find((usuario) => usuario.email === email);
+
+    const usuarioExistenteDni = usuariosProfesionales.find((usuario) => usuario.dni === dni);
 
     if (dni === "" || nombre === "" || apellido === "" || listaEspecialidad === "" ||  email === "" || password === "" || confirmarPassword === ""){
         Swal.fire({
@@ -67,7 +76,22 @@ function validarRegistro(e){
             text: 'Las contraseñas deben ser iguales',
           })
         return; 
-    } else {
+    }   else if (usuarioExistente){
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Ya existe un usuario registrado con ese email',
+              })
+            return; 
+    }   else if (usuarioExistenteDni){
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Ya existe un usuario registrado con ese DNI',
+          })
+        return;
+    }  
+        else {
         Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -78,15 +102,43 @@ function validarRegistro(e){
     };
 
     
+    const imagenFile = inputImagen.files[0];
 
-    const newUser = new Usuario(dni, nombre, apellido, listaEspecialidad, email, password);
+    if (!imagenFile) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debes seleccionar una imagen',
+        });
+        return;
+    }
 
-    usuariosProfesionales.push(newUser);
+    // Usa FileReader para leer la imagen como una cadena base64
+    const reader = new FileReader();
 
-    localStorage.setItem("usuariosProfesionales", JSON.stringify(usuariosProfesionales));
+    reader.onload = function (e) {
+        const imagenBase64 = e.target.result;
+        const newUser = new Usuario(dni, nombre, apellido, listaEspecialidad, email, password, imagenBase64);
+        usuariosProfesionales.push(newUser);
+        localStorage.setItem("usuariosProfesionales", JSON.stringify(usuariosProfesionales));
+        validarUsuario.reset();
+    };
 
-    validarUsuario.reset();
+    reader.readAsDataURL(imagenFile);
 }
+
+    // const newUser = new Usuario(dni, nombre, apellido, listaEspecialidad, email, password, imagen);
+
+    // usuariosProfesionales.push(newUser);
+
+    // localStorage.setItem("usuariosProfesionales", JSON.stringify(usuariosProfesionales));
+
+    // validarUsuario.reset();
+
+
+
+
+
 
 
 
@@ -128,6 +180,12 @@ function validarRegistroPaciente(e) {
     const resultadoValidacion = validarEmail.test(emailPaciente);
 
     const validarPaciente = document.getElementById("validarPaciente");
+    
+    // Buscar si el DNI ya existe en el localStorage
+    const dniExistente = usuariosPacientes.find((usuario) => usuario.dniPaciente === dniPaciente);
+
+    // Buscar si el correo ya existe en el localStorage
+    const emailExistente = usuariosPacientes.find((usuario) => usuario.emailPaciente === emailPaciente);
 
     if (dniPaciente === "" || nombrePaciente === "" || apellidoPaciente === "" || obraSocial === "" ||  emailPaciente === "" || passwordPaciente === "" || confirmarPasswordPaciente === ""){
         Swal.fire({
@@ -153,6 +211,18 @@ function validarRegistroPaciente(e) {
             title: 'Error',
             text: 'Las contraseñas deben ser iguales',
         });
+    } else if (dniExistente) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Ya existe un usuario registrado con ese DNI',
+        });
+    } else if (emailExistente) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Ya existe un usuario registrado con ese correo',
+        });
     } else {
         Swal.fire({
             position: 'top-end',
@@ -165,5 +235,21 @@ function validarRegistroPaciente(e) {
         usuariosPacientes.push(newUserPaciente);
         localStorage.setItem("usuariosPacientes", JSON.stringify(usuariosPacientes));
         validarPaciente.reset();
+    }
+}
+
+function mostrarVistaPrevia() {
+    var input = document.getElementById('imagen');
+    var preview = document.getElementById('preview');
+    
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        }
+
+        reader.readAsDataURL(input.files[0]);
     }
 }
