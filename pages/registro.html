@@ -20,7 +20,7 @@
       <a class="navbar-brand" href="#">
         <img src="../Assets/img/LOGO SMCM.png" alt="logo" width="100px">
       </a>
-      <img src="../Assets/img/cooltext446888935579480.png" alt="Clinica San Miguel" srcset="">
+      <img src="../Assets/img/titulo del Navbar.png" alt="Clinica San Miguel" srcset="">
       <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -45,7 +45,7 @@
 <!-------------- FIN NAV BAR!-----------------> 
 
 <!-------------- TITULO-----------------> 
-<h1 class="titulo"><img src="../Assets/img/cooltext446820192355383.png" alt="Titulo Registro"></h1>
+<h1 class="titulo"><img src="../Assets/img/cooltext446820192355383.png" alt="Titulo Registro" class="imagenRegistro"></h1>
 <!-------------- FIN DEL TITULO-----------------> 
 
 <!-------------- BOTONES PARA ELEGIR SI SOS PROFESIONAL O PACIENTE-----------------> 
@@ -67,25 +67,35 @@
       </div>
       <div class="modal-body">
         <form id="validarUsuario">
-          <label class="text-black fs-3">DNI</label>
-          <input class="form-control w-50" type="number" id="dni">
-          <label class="text-black fs-3">Nombre</label>
-          <input class="form-control w-50" type="text" id="nombre">
-          <label class="text-black fs-3">Apellido</label>
-          <input class="form-control w-50" type="text" id="apellido">
-          <label class="text-black fs-3">Especialidad</label>
-          <input class="form-control w-50" type="text" id="especialidad">
-          <label class="text-black fs-3">Email</label>
-          <input class="form-control w-50" type="email" id="email">
-          <label class="text-black fs-3">Contraseña</label>
-          <input class="form-control w-50" type="password" id="password">
-          <label class="text-black fs-3">Confirmar Contraseña</label>
-          <input class="form-control w-50" type="password" id="confirmarPassword">
+          <label class="text-black fs-4">DNI <span class="parentesisDNI">(ingresar sin puntos)</span></label>
+          <input minlength="7" maxlength="8" class="form-control w-50" type="number" id="dni" oninput="this.value = this.value.replace(/[^\d]/g, '');">
+          <label class="text-black fs-4">Nombre</label>
+          <input minlength="10" maxlength="20" class="form-control w-50" type="text" id="nombre">
+          <label class="text-black fs-4">Apellido</label>
+          <input minlength="10" maxlength="20" class="form-control w-50" type="text" id="apellido">
+          <label class="text-black fs-4" for="listaEspecialidad">Especialidad</label>
+          <select name="listaEspecialidad" id="listaEspecialidad" class="form-control w-50">
+          <option disabled selected="">Seleccione una opción:</option>
+          <option value="Cardiología">Cardiología</option>
+          <option value="Oftalmología">Oftalmología</option>
+          <option value="Traumatología">Traumatología</option>
+          <option value="Endocrinología">Endocrinología</option>
+          <option value="Otra">Otra</option>
+          </select>
+          <label class="text-black fs-4">Email</label>
+          <input minlength="7" maxlength="30" class="form-control w-50" type="email" id="email">
+          <label class="text-black fs-4">Contraseña</label>
+          <input minlength="7" maxlength="20" class="form-control w-50" type="password" id="password">
+          <label class="text-black fs-4">Confirmar Contraseña</label>
+          <input minlength="7" maxlength="20" class="form-control w-50" type="password" id="confirmarPassword">
+          <label class="text-black fs-4">Agregue una imagen</label>
+          <input class="form-control w-50" type="file" id="imagen" onchange="mostrarVistaPrevia()">
+          <img id="preview" alt="Vista previa de la imagen">
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" id="validarRegistro">Confirmar</button>
+        <button type="button" class="btn btn-success" id="validarRegistro">Confirmar</button>
       </div>
     </div>
   </div>
@@ -100,26 +110,34 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
-          <label class="text-black fs-3">DNI</label>
-          <input class="form-control w-50" type="number">
+        <form id="validarPaciente">
+          <label class="text-black fs-3">DNI <span class="parentesisDNI">(ingresar sin puntos)</span></label>
+          <input class="form-control w-50" type="number" oninput="this.value = this.value.replace(/[^\d]/g, '');" id="dniPaciente">
           <label class="text-black fs-3">Nombre</label>
-          <input class="form-control w-50" type="text">
+          <input class="form-control w-50" type="text" id="nombrePaciente">
           <label class="text-black fs-3">Apellido</label>
-          <input class="form-control w-50" type="text">
+          <input class="form-control w-50" type="text" id="apellidoPaciente">
           <label class="text-black fs-3">Obra Social</label>
-          <input class="form-control w-50" type="text">
+          <select name="listaObraSocial" id="obraSocial" class="form-control w-50">
+            <option disabled selected="">Seleccione una opción:</option>
+            <option value="Osde">Osde</option>
+            <option value="Prensa">Prensa</option>
+            <option value="Boreal">Boreal</option>
+            <option value="Pami">Pami</option>
+            <option value="Otra">Otra</option>
+            </select>
+          <!-- <input class="form-control w-50" type="text"> -->
           <label class="text-black fs-3">Email</label>
-          <input class="form-control w-50" type="email">
+          <input class="form-control w-50" type="email" id="emailPaciente">
           <label class="text-black fs-3">Contraseña</label>
-          <input class="form-control w-50" type="password">
+          <input class="form-control w-50" type="password" id="passwordPaciente">
           <label class="text-black fs-3">Confirmar Contraseña</label>
-          <input class="form-control w-50" type="password">
+          <input class="form-control w-50" type="password" id="confirmarPasswordPaciente">
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
-        <button type="submit" class="btn btn-primary">Confirmar</button>
+        <button type="button" class="btn btn-success" id="validarRegistroPaciente">Confirmar</button>
       </div>
     </div>
   </div>
@@ -216,6 +234,7 @@
       </div>
   </div>
 </footer>
+
 <!-------------- FIN DE FOOTER!----------------->
 
 <script src="../js/registro.js"></script>
