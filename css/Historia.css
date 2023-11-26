@@ -12,9 +12,19 @@ padding: 0;
 
 .contenedor-Historia{
     
-    margin-top: 100px;
+    margin-top: 150px;
     text-align: center;
     
+  }
+  @media(max-width: 328px)
+  {.contenedor-Historia{
+  margin-top: 250px;
+  }
+  }
+  @media(min-width: 375px)
+  {.contenedor-Historia{
+  margin-top: 200px;
+  }
   }
 
 
@@ -361,6 +371,7 @@ footer{
     .container {
       padding: 1.5rem;
     }
+  }
   
     .contact-info:before {
       display: none;
@@ -403,7 +414,9 @@ footer{
     .btn {
       padding: 0.45rem 1.2rem;
     }
+
+  @media(min-width: 1000px)
+  {.contenedorcontacto{
+  margin-left: 25%;
   }
-  
-  
-  
+}

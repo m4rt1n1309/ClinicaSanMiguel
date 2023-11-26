@@ -1,13 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turnos</title>
+    <title>SAN MIGUEL CLINICA - Turnos</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/css/style paginaPrincipal.css">
+    <link rel="stylesheet" href="/css/turnoPaciente.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100&family=Roboto&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+
 </head>
+
 <body>
-    
+    <!-- navBar -->
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="../Assets/img/LOGO SMCM.png" alt="logo" width="100px">
+            </a>
+            <img src="../Assets/img/cooltext446888935579480.png" alt="Clinica San Miguel" srcset="">
+            <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-5">
+                    <li class="nav-item">
+                        <a class="transformar nav-link" aria-current="page" href="../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="transformar nav-link" href="#">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="transformar nav-link" href="#">Registro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="transformar nav-link" href="#">Profesionales</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- turno -->
+    <!-- nombre del usuario en spam -->
+    <div style="margin-top:250px; margin-left:35px; display: flex; justify-content: space-around;">
+        <div style="display: flex;">
+            <h2>Paciente:</h2>
+            <select id="listaPaciente"  onchange="cargarTurnos()" class="form-control " style="margin:0px 0px 0px 10px; width: 250px;"></select>
+        </div>
+
+        <div>
+            <button onclick="nuevoTurno()">Nuevo turno</button>
+        </div>
+
+    </div>
+    <hr>
+    <div id="divTurno">
+        <!-- aqui iria los turnos en el caso de que se haga click en nuevo turno -->
+        <div id="selecDoc" style="display: flex; justify-content: space-around;">
+            <div style="width: 50%;" class="m-3">
+                <label >Especialidades:</label>
+                <select id="especialidades" onchange="cargarMedicos()" class="form-control  w-85 ">
+                    <option value="Cardiología">Cardiología</option>
+                    <option value="Oftalmología">Oftalmología</option>
+                    <option value="Traumatología">Traumatología</option>
+                    <option value="Endocrinología">Endocrinología</option>
+                    <!-- Puedes agregar más opciones según sea necesario -->
+                </select>
+            </div>
+
+            <div style="width: 50%;" class="m-3">
+                <label >Medicos:</label>
+                <select id="medicos" class="form-control  w-85">
+                    <!--  aqui se inserta lo encontrado por especialidad-->
+                </select>
+            </div>
+        </div>
+
+        <div id="datosTurno" style="text-align: center;" class="m-3">
+            <h2 class="w-50">Disponible</h2> 
+            <input id="fechaTurno" type="date" onchange="cargarHorarios()">   
+
+            <div id="horarioTurnos" style="display:flex; flex-wrap:wrap; width: 200px; height: 200px;margin: 30px;" >
+                <!-- aqui irian los horarios en pequeños divs -->
+
+            </div>
+
+            <div style="display: flex; flex-direction: column; ">
+                <label>Motivo de la consulta:</label>
+                <textarea id="motivo" cols="80" rows="10"></textarea>
+            </div>
+        </div>
+
+        <p id="turnoSeleccionado" style=" display: none;"></p>
+        <div style="display: inline; margin: 20px;">
+            <button onclick="validarDatos()">Confirmar</button>
+            <button onclick="mostrarModal2()">Cancelar</button>
+        </div>
+
+    </div>
+
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <p>¿Quiere confirmar el turno?</p>
+            <button onclick="confirmarTurno()">Sí</button>
+            <button onclick="cerrarModal()">No</button>
+        </div>
+    </div>
+
+
+    <div id="modal2" class="modal2">
+        <div class="modal-content2">
+            <p>Estas por borrar los datos ingresados ¿Quiere cancelar el turno?</p>
+            <button onclick="confirmarTurno2()">Sí</button>
+            <button onclick="cerrarModal2()">No</button>
+        </div>
+    </div>
+
+
+
+
+
+    <hr>
+
+    <div id="pruebaM"  style="margin: 50px;">
+        Turnos pendientes:
+    </div>
+
+
+    <div class="container mt-4 " id="contenedorCard">
+        <!-- Las tarjetas se agregarán dinámicamente aquí -->
+        <div class="row " id="filaTarjetas">
+            <!-- Cada tarjeta se agregará dentro de esta fila -->
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/turnoPaciente.js"></script>
 </body>
+
 </html>

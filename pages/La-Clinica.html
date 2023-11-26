@@ -22,56 +22,51 @@ crossorigin="anonymous"
 <body>
    <!-------------- NAV BAR!-----------------> 
    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
-     <div class="container-fluid">
-       <a class="navbar-brand" href="#">
-         <img src="/assets/img/LOGO SMCM.png" alt="logo" width="50px">
-       </a>
-       <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-       </button>
-       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-5">
-           <li class="nav-item">
-             <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="#">Log In</a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link" href="#">Registro</a>
-           </li>
-       
-         <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             Nosotros
-           </a>
-           <ul class="dropdown-menu">
-             <li><a class="dropdown-item" href="/pages/La-Clinica.html">La Clinica</a></li>
-             <li><hr class="dropdown-divider"></li>
-             <li><a class="dropdown-item" href="/pages/Autoridades.html">Autoridades</a></li>
-             <li><hr class="dropdown-divider"></li>
-             <li><a class="dropdown-item" href="/pages/Historia.html">Historias</a></li>
-             <li><hr class="dropdown-divider"></li>
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/index.html">
+        <img src="/Assets/img/LOGO SMCM.png" alt="logo" width="100px">
+      </a>
+
+      <a href="/index.html"><img src="/Assets/img/titulo del Navbar.png" alt=""></a>
+
+      <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-5">
+          <li class="nav-item">
+            <a class="transformar nav-link" aria-current="page" href="/index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="transformar nav-link" href="#">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="transformar nav-link" href="/pages/registro.html">Registro</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Nosotros
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/pages/La-Clinica.html">La Clinica</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/pages/Autoridades.html">Autoridades</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/pages/Historia.html">Historias</a></li>
+              <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="/pages/Equipo.html">Equipo de trabajo</a></li>
-           </ul>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link" href="#">Profesionales</a>
-         </li>
-       </ul>
-       </div>
-     </div>
-   </nav>
- <!-------------- FIN NAV BAR!-----------------> 
-
- <div class="contenedor-nosotros">
-
-  <h1 class="nosotros">Nosotros</h1>
- </div>
- 
- 
- <div class="contenedor-conocenos">
-  <img class="imagen" src="/assets/img/Clinica Pasillo.jpg" alt="">
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="transformar nav-link" href="#">Profesionales</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+ <!-------------- FIN NAV BAR!----------------->  
+ <div class="contenedor-conocenos mt-5 pt-5">
+  
 
   
   <div>
@@ -98,13 +93,14 @@ Tiene incorporados a su ya calificado cuerpo de profesionales que cubren todas l
   -   Innovación y desarrollo del conocimiento médico en pos del beneficio de la comunidad.</p></p> <br>
   </div>
  </div>
+</div>
 <!------ Inicio del Mapa ------>
  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28484.469458173528!2d-65.2405328266821!3d-26.822177291040212!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94223792d6c56903%3A0xf88d5b92b5c56527!2sSan%20Miguel%20de%20Tucum%C3%A1n%2C%20Tucum%C3%A1n!5e0!3m2!1ses!2sar!4v1700348750231!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
  <!-- <---- Fin de Mapa ------>
 
  <!-- Formulario de Contactanos -->
 
- <div class="container">
+ <div class="container contenedorcontacto" >
   <div class="form">
     <div class="contact-info">
       <h3 class="title">Informacion de contacto</h3>
@@ -184,8 +180,7 @@ Tiene incorporados a su ya calificado cuerpo de profesionales que cubren todas l
 
  <!-------------- FOOTER!----------------->
 
-
-<footer class="bg-light text-dark pt-5 pb-4">
+ <footer class="bg-light text-dark pt-5 pb-4">
   <div class="container text-center text-md-start">
       <div class="row text-center text-md-start">
           <div class="col-md-3 col-lg-3 col-xl-3 mx-auto">
@@ -205,13 +200,13 @@ Tiene incorporados a su ya calificado cuerpo de profesionales que cubren todas l
               </h5>
               <hr class="mb-4" />
               <p>
-                  <a href="#" class="text text-dark">Tu cuenta</a>
+                  <a href="/pages/Error404.html" class="text text-dark">Tu cuenta</a>
               </p>
               <p>
-                  <a href="#" class="text text-dark">Turnos</a>
+                  <a href="/pages/turnoPaciente.html" class="text text-dark">Turnos</a>
               </p>
               <p>
-                  <a href="#" class="text text-dark">Ayuda</a>
+                  <a href="/pages/Error404.html" class="text text-dark">Ayuda</a>
               </p>
           </div>
           <div class="col-md-2 col-lg-2 col-xl-2 mc-auto-3">
@@ -220,11 +215,11 @@ Tiene incorporados a su ya calificado cuerpo de profesionales que cubren todas l
               </h5>
               <hr class="mb-4" />
               <p>
-                  <a href="#" class="text text-dark fab fa-facebook"></a>
+                  <a href="/pages/Error404.html" class="text text-dark fab fa-facebook"></a>
                   <i>Facebook</i>
               </p>
               <p>
-                  <a href="#" class="text text-dark fab fa-instagram"></a>
+                  <a href="/pages/Error404.html" class="text text-dark fab fa-instagram"></a>
                   <i>Instagram</i>
               </p>
               <p></p>
@@ -235,16 +230,16 @@ Tiene incorporados a su ya calificado cuerpo de profesionales que cubren todas l
               </h5>
               <hr class="mb-4" />
               <li>
-                  <a href="#" class="text text-dark">Cardiologia</a>
+                  <a href="/pages/Error404.html" class="text text-dark">Cardiologia</a>
               </li>
               <li>
-                  <a href="#" class="text text-dark">Traumatologia</a>
+                  <a href="/pages/Error404.html" class="text text-dark">Traumatologia</a>
               </li>
               <li>
-                  <a href="#" class="text text-dark">Oftalmologia</a>
+                  <a href="/pages/Error404.html" class="text text-dark">Oftalmologia</a>
               </li>
               <li>
-                  <a href="#" class="text text-dark">Endocrinologia</a>
+                  <a href="/pages/Error404.html" class="text text-dark">Endocrinologia</a>
               </li>
           </div>
           <div class="col-md-2 col-lg-2 col-xl-2 mc-auto-3">
@@ -264,7 +259,14 @@ Tiene incorporados a su ya calificado cuerpo de profesionales que cubren todas l
                   <i> +543815555555 </i>
               </p>
           </div>
-          <hr class="mb-4" /> 
+          <hr class="mb-4" />
+
+          <p class="text-center ">
+              <small>&copy; 2021 <b>Rolling Code</b> - Todos los Derechos Reservados.</small> 
+          </p>
+      </div>
+  </div>
+</footer>
 <!-------------- FIN DE FOOTER!----------------->
 
 </body>
