@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+			crossorigin="anonymous"
+		></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+                <img src="../Assets/img/LOGO SMCM.png" alt="logo" width="100px">
+              </a>
+        
+              <img src="../Assets/img/titulo del Navbar.png" alt="">
+        
+              <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-5">
+                  <li class="nav-item">
+                    <a class="transformar nav-link" aria-current="page" href="../index.html">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="transformar nav-link" href="../pages/login.html">Log In</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="transformar nav-link" href="../pages/registro.html">Registro</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="transformar nav-link" href="#">Profesionales</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+		
+        <!-- Tabla Usuario -->
+        <div  style="margin-top: 150px;" class="container">           
+            <div class="my-4">
+                <h2>Usuarios a registrar</h2>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <table class="table">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>dni</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>tipo de usuario</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaUsuario"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tabla Confirmados -->
+
+            <div class="row my-4">
+                <div class="col"> 
+                    <h2>Usuarios confirmados</h2>
+                </div>
+               
+                
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <table class="table">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>dni</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>tipo de usuario</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaconfirmados"></tbody>
+                    </table>
+                </div>
+            </div>
+           
+            <!-- Modal Crear Producto -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Producto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                       <form id="formularioProductos">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Nombre del producto</label>
+                                <input type="text" class="form-control" id="nombre">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Precio</label>
+                                <input type="number" class="form-control" id="precio">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
+                                <input type="text" class="form-control" id="descripcion">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        </div>
+                    </form>               
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Editar Producto -->
+        <div id="editProductModal" class="modal w-50 my-auto">
+			<!-- Contenido del modal -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<form id="formProductosEditar">
+					<div class="modal-body" id="bodyModificaModal">
+						<div class="form-group">
+							<label for="nombre">Producto</label>
+							<input
+								type="text"
+								class="form-control"
+								id="nombreEditar"
+								value=""
+								autocomplete="off"
+							/>
+						</div>
+						
+						<div class="form-row">
+							<div class="col">
+								<label for="precio">Precio</label>
+								<input
+									type="number"
+									class="form-control"
+									id="precioEditar"
+									min="0"
+									autocomplete="off"
+								/>
+							</div>
+							<div class="col">
+								<label>descripcion</label>
+								<input
+									type="text"
+									class="form-control"
+									id="descripcionEditar"
+									value="0"
+									min="0"
+									autocomplete="off"
+								/>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">
+							Cancelar
+						</button>
+						<button type="submit" class="btn btn-primary">Guardar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+        <footer class="bg-light text-dark pt-5 pb-4">
+            <div class="container text-center text-md-start">
+                <div class="row text-center text-md-start">
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto">
+                        <h5 class="text-uppercase mb-4 font-weight-bold text-success">
+                            Nosotros
+                        </h5>
+                        <hr class="mb-4" />
+                        <p>
+                            San Miguel CM es una clinica privada que cuenta con
+                            los profesionales mas capacitados en el norte argentino. Desde
+                            2010
+                        </p>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2 mc-auto-3">
+                        <h5 class="text-uppercase mb-4 font-weight-bold text-success">
+                            Enlaces
+                        </h5>
+                        <hr class="mb-4" />
+                        <p>
+                            <a href="#" class="text text-dark">Tu cuenta</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text text-dark">Turnos</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text text-dark">Ayuda</a>
+                        </p>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2 mc-auto-3">
+                        <h5 class="text-uppercase mb-4 font-weight-bold text-success">
+                            Redes
+                        </h5>
+                        <hr class="mb-4" />
+                        <p>
+                            <a href="#" class="text text-dark fab fa-facebook"></a>
+                            <i>Facebook</i>
+                        </p>
+                        <p>
+                            <a href="#" class="text text-dark fab fa-instagram"></a>
+                            <i>Instagram</i>
+                        </p>
+                        <p></p>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2 mc-auto-3">
+                        <h5 class="text-uppercase mb-4 font-weight-bold text-success">
+                            Servicios
+                        </h5>
+                        <hr class="mb-4" />
+                        <li>
+                            <a href="#" class="text text-dark">Cardiologia</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text text-dark">Traumatologia</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text text-dark">Oftalmologia</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text text-dark">Endocrinologia</a>
+                        </li>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2 mc-auto-3">
+                        <h5 class="text-uppercase mb-4 font-weight-bold text-success">
+                            Contacto
+                        </h5>
+                        <hr class="mb-4" />
+                        <p>
+                            <li class="fas fa-home me-3"></li> <i> San Miguel de Tucuman </i>
+                        </p>
+                        <p></p>
+                        <p>
+                            <li class="fas fa-envelope me-3"></li> <i>SMclinica@gmail.com</i>
+                        </p>
+                        <p>
+                            <li class="fas fa-phone me-3"></li>
+                            <i> +543815555555 </i>
+                        </p>
+                    </div>
+                    <hr class="mb-4" />
+          
+                    <p class="text-center ">
+                        <small>&copy; 2021 <b>Rolling Code</b> - Todos los Derechos Reservados.</small> 
+                    </p>
+                </div>
+            </div>
+          </footer>
+ 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="/js/admin.js"></script>
+	</body>
+</html>
