@@ -1,12 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de Turnos Doc</title>
+    <title>SAN MIGUEL CLINICA - Turnos</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/css/style paginaPrincipal.css">
+    <link rel="stylesheet" href="/css/turnoPaciente.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100&family=Roboto&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+
 </head>
+
 <body>
-    
+    <!-- navBar -->
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="../Assets/img/LOGO SMCM.png" alt="logo" width="100px">
+            </a>
+            <img src="../Assets/img/cooltext446888935579480.png" alt="Clinica San Miguel" srcset="">
+            <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-5">
+                    <li class="nav-item">
+                        <a class="transformar nav-link" aria-current="page" href="../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="transformar nav-link" href="#">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="transformar nav-link" href="#">Registro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="transformar nav-link" href="#">Profesionales</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <input id="fechaTurno" type="date" style="margin-top:180px;" onchange="cargarHorarios()">   
+
+    <div id="pruebaM"  style="margin: 50px;">
+        Turnos pendientes:
+    </div>
+
+
+    <div class="container mt-4 " id="contenedorCard">
+        <!-- Las tarjetas se agregarán dinámicamente aquí -->
+        <div class="row " id="filaTarjetas">
+            <!-- Cada tarjeta se agregará dentro de esta fila -->
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/turnoDoc.js"></script>
 </body>
+
 </html>

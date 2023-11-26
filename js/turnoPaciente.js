@@ -12,7 +12,7 @@ class Turno{
 }
 
 //aqui guardariamos 
-//dni del profesional
+//nombre del profesional
 //fecha de turnos
 //horarios por fecha
 //
@@ -20,8 +20,8 @@ class Turno{
 //y para cada uno de los días, se guardarían los horarios reservados
 class UsarTurno{
     constructor(nombre,fecha,horarios){
-        this.nombre = nombre;
-        this.fecha = fecha;
+        this.nombre = nombre; 
+        this.fecha = fecha; 
         this.horarios = horarios;
     }
 }
@@ -51,9 +51,7 @@ const profesional = document.getElementById("medicos");
 const fechaTurno = document.getElementById("fechaTurno");
 const divHorarios = document.getElementById("divHorarios");
 const horarioTurnos = document.getElementById("horarioTurnos");
-
 const turnoSeleccionado = document.getElementById("turnoSeleccionado");
-
 const motivo = document.getElementById("motivo");
 
 
@@ -98,6 +96,8 @@ var dia = fechaActual.getDate().toString().padStart(2, '0');
 
 // Formatea la fecha como 'yyyy-mm-dd'
 var fechaFormateada = `${año}-${mes}-${dia}`;
+
+
 
 function cargarHorarios(){
 
@@ -268,35 +268,36 @@ function confirmarTurno2() {
     turnoSeleccionado.textContent ='';
     
     motivo.value = '';
-  
+
     // Cerrar el modal después de la confirmación
     cerrarModal2();
 }
 
+/*-------  --------- */
 
 const contenedorCard = document.querySelector('#contenedorCard');
 
 //const profesionales = JSON.parse(localStorage.getItem('usuariosProfesionales'));
 
-function cargarProfesionales() {
-    let contadorTarjetas = 0; // Contador para realizar un seguimiento de las tarjetas en cada fila
+function cargarTurnos() {
+    let turnoCont = 0; // Contador para realizar un seguimiento de las tarjetas en cada fila
 
-    profesionales.forEach(function (profesional) {
+    Turnos.forEach(function (turno02) {
         // Crear un nuevo div para cada tarjeta
         let div = document.createElement('div');
-        div.className = "col-md-3 mb-4"; // Ajusta según tus necesidades
+        div.className = " mb-4 col-md-6 col-lg-4 col-xl-4 col-xxl-3"; // Ajusta según tus necesidades
 
         // Obtener la cadena base64 de la imagen desde el localStorage
-        let imgSrc = profesional.imagen;
+        //let imgSrc = profesional.imagen;
         
          // Crear la estructura de la tarjeta
         div.innerHTML = `
             <div class="card" style="width: 18rem;">
-                <img src="${imgSrc}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title estilosTitulo">${profesional.nombre} ${profesional.apellido}</h5>
+                    <h5 class="card-title estilosTitulo">Doctor: ${turno02.medico} </h5>
+                    <p class="card-text">Especialidad: ${turno02.especialidad}</p>
                     <p class="card-text">Especialidad: ${profesional.especialidad}</p>
-                    <p class="card-text">Lunas a Viernes de 8:00 a 16:00</p>
+                    <p class="card-text">Fecha y hora: ${turno02.fecha} - ${turno02.horario} hs. </p>
                 </div>
             </div>
         `;
@@ -305,14 +306,14 @@ function cargarProfesionales() {
         document.getElementById('filaTarjetas').appendChild(div);
 
         // Aumentar el contador de tarjetas
-        contadorTarjetas++;
+        turnoCont++;
 
         // Si hemos alcanzado 4 tarjetas, crear una nueva fila
-        if (contadorTarjetas === 4) {
+        if (turnoCont === 4) {
             document.getElementById('filaTarjetas').appendChild(document.createElement('div')); // Agregar un salto de línea (div vacío) para iniciar una nueva fila
             contadorTarjetas = 0; // Reiniciar el contador de tarjetas para la nueva fila
         }
     });
 }
 
-cargarProfesionales();
+cargarTurnos();
