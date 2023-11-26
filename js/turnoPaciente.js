@@ -8,7 +8,6 @@ class Turno{
         this.fecha = fecha;
         this.horario = horario;
         this.motivo = motivo;
-        
     }
 }
 
@@ -20,8 +19,8 @@ class Turno{
 //de esta forma tenemos un registro por mnedicos, que puede tener N días...
 //y para cada uno de los días, se guardarían los horarios reservados
 class UsarTurno{
-    constructor(){
-        this.dni = dni;
+    constructor(nombre,fecha,horarios){
+        this.nombre = nombre;
         this.fecha = fecha;
         this.horarios = horarios;
     }
@@ -37,7 +36,7 @@ let turnosOcupados = [];
 turnosOcupados = JSON.parse(localStorage.getItem("turnosOcupados")) || [];
 
 let Turnos = [];
-Turnos = JSON.parse(localStorage.getItem("Turnos")) || [];
+Turnos = JSON.parse(localStorage.getItem("turnos")) || [];
 
 
 console.log(medi);
@@ -115,52 +114,182 @@ function cargarHorarios(){
     
     
     
+    //recorro los medicos para cargar los horarios que tengan
+    //falta comparar los horarios ocupados para no incluirlos
 
     horarioTurnos.innerHTML = '';
     medi.forEach(function(med){
         let nombreComp = med.apellido +' '+  med.nombre;
-
+        //encuentra el profesional para cargar los hoarios
         if(nombreComp == profesional.value ){
-    
+            /*recorre los horarios para insertarlos*/
             med.horario.forEach(turnos => {
+                    //          9:00
+                //recorro los horarios ocupados comparando con la fecha ingresada
+                const validarH = turnosOcupados.find(function(hOcupado){
+                    //una vez encontrado el registro de la fecha y doctor
+                    return  hOcupado.nombre === nombreComp &&  hOcupado.fecha === fechaSelec && hOcupado.horarios === turnos;
+                })
+                if(validarH == undefined){
+                    const turno = document.createElement("button");
+                    turno.textContent  = turnos;
+                    turno.onclick = function() {
+                        // Función que se ejecutará al hacer clic en el botón
+
+                        turnoSeleccionado.textContent= this.textContent;
+                    };
+                    turno.className = "turnoHorario-btn"
+                    horarioTurnos.appendChild(turno);
+                }
+/*
+                //console.log(validarH);
                 const turno = document.createElement("button");
                 turno.textContent  = turnos;
                 turno.onclick = function() {
                     // Función que se ejecutará al hacer clic en el botón
-                    //alert("Hiciste clic en el botón con horario: " + this.textContent);
-                    // Cambia el color del botón al hacer clic
-                    //this.style.backgroundColor = "#e74c3c";
+
                     turnoSeleccionado.textContent= this.textContent;
                 };
                 turno.className = "turnoHorario-btn"
-                horarioTurnos.appendChild(turno);
+                horarioTurnos.appendChild(turno);*/
+
             });
-           // console.log(horarioSelect);
+
         }
     })   
 }
 
 function validarDatos(){
 
-    console.log(especialidades.value);
+    const id = Date.now();
 
-    console.log(profesional.value);
+    const varEspecialidad = especialidades.value
 
-    console.log(fechaTurno.value);
+    const varProfesional = profesional.value;
 
-    console.log(turnoSeleccionado.textContent);
+    const varFechaTurno = fechaTurno.value;
 
-    console.log(motivo.value);
+    const varHorario = turnoSeleccionado.textContent;
+
+    const varMotivo = motivo.value;
+
+
+    if(
+        varEspecialidad === '' || varProfesional === '' ||
+        varFechaTurno === '' || varHorario === '' ||
+        varMotivo === ''
+    ){
+        Swal.fire({
+            icon: "warning",
+            title: "Atención",
+            text: "Debes completar todos los campos para agendar el Turno!"
+        });
+    }else{
+        mostrarModal();
+    }
 
 }
 
+function mostrarModal() {
+    // Obtener el modal por su ID
+    var modal = document.getElementById("modal");
 
-
-function grabar(){
-
-
+    // Mostrar el modal
+    modal.style.display = "block";
 }
 
+function cerrarModal() {
+    // Obtener el modal por su ID
+    var modal = document.getElementById("modal");
+    //limpiar datos dsp de grabar
+    especialidades.value = '';
+
+    profesional.value = '';
+
+    fechaTurno.value = '';
+    horarioTurnos.innerHTML = '';
+    turnoSeleccionado.textContent ='';
+    
+    motivo.value = '';
+    // Cerrar el modal
+    modal.style.display = "none";
+}
+
+function confirmarTurno() {
+    // Lógica para confirmar el turno
+    Swal.fire({
+        icon: "success",
+        title: "Listo!",
+        text: "Su Turno fue agendado exitosamente!",
+        timer: 1500
+    });
+    
+    // aqui deberiamos cargar el localStorage
+
+    const id = Date.now();
+
+    const varEspecialidad = especialidades.value
+
+    const varProfesional = profesional.value;
+
+    const varFechaTurno = fechaTurno.value;
+
+    const varHorario = turnoSeleccionado.textContent;
+
+    const varMotivo = motivo.value;
+    
+    const newTurno = new Turno(id,'paciente', varEspecialidad, varProfesional, varFechaTurno, varHorario, varMotivo);
+    
+    Turnos.push(newTurno);
+    localStorage.setItem("turnos", JSON.stringify(Turnos));
+
+
+
+
+    const newUsarTurno = new UsarTurno(varProfesional, varFechaTurno, varHorario);
+    turnosOcupados.push(newUsarTurno);
+    localStorage.setItem("turnosOcupados", JSON.stringify(turnosOcupados));
+
+
+
+
+    // Cerrar el modal después de la confirmación
+    cerrarModal();
+}
+
+
+function mostrarModal2() {
+    // Obtener el modal por su ID
+    var modal = document.getElementById("modal2");
+
+    // Mostrar el modal
+    modal.style.display = "block";
+}
+
+function cerrarModal2() {
+    // Obtener el modal por su ID
+    var modal = document.getElementById("modal2");
+
+    // Cerrar el modal
+    modal.style.display = "none";
+}
+
+function confirmarTurno2() {
+    // Lógica para confirmar el turno
+ //limpiar datos dsp de cancelar
+    especialidades.value = '';
+
+    profesional.value = '';
+
+    fechaTurno.value = '';
+    horarioTurnos.innerHTML = '';
+    turnoSeleccionado.textContent ='';
+    
+    motivo.value = '';
+  
+    // Cerrar el modal después de la confirmación
+    cerrarModal2();
+}
 //turnoSeleccionado
 
 //Crea instancia para guardar newUser 

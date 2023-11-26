@@ -20,6 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100&family=Roboto&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -108,13 +109,36 @@
             </div>
         </div>
 
-        <p id="turnoSeleccionado"></p>
+        <p id="turnoSeleccionado" style=" display: none;"></p>
         <div style="display: inline; margin: 20px;">
             <button onclick="validarDatos()">Confirmar</button>
-            <button>Cancelar</button>
+            <button onclick="mostrarModal2()">Cancelar</button>
         </div>
 
     </div>
+  
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <p>¿Quiere confirmar el turno?</p>
+            <button onclick="confirmarTurno()">Sí</button>
+            <button onclick="cerrarModal()">No</button>
+        </div>
+    </div>
+
+
+    <div id="modal2" class="modal2">
+        <div class="modal-content2">
+            <p>Estas por borrar los datos ingresados ¿Quiere cancelar el turno?</p>
+            <button onclick="confirmarTurno2()">Sí</button>
+            <button onclick="cerrarModal2()">No</button>
+        </div>
+    </div>
+
+
+
+
+
     <hr>
 
     <div id="pruebaM"  style="margin: 50px;">
@@ -122,6 +146,7 @@
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/turnoPaciente.js"></script>
 </body>
 
