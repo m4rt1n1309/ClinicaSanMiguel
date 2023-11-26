@@ -41,7 +41,7 @@ function validarLogin(e) {
 		if (existeDNI.password === password) {
 			
 
-            location.href = 'turnoDoc.html';
+            window.location.href = "../index.html";
 		} else {
 			Swal.fire({
                 icon: 'error',
@@ -60,20 +60,20 @@ function validarLogin(e) {
 
 let usuariosPac = JSON.parse(localStorage.getItem('usuariosPacientes'));
 
-validarUsuario.addEventListener ("submit", validarLogin);
+validarUsuario.addEventListener ("submit", validarLoginPac);
 
 
 
-document.getElementById("validarLoginPaciente").addEventListener("click", validarLogin);
-
-
-
-
+document.getElementById("validarLoginPaciente").addEventListener("click", validarLoginPac);
 
 
 
 
-function validarLogin(e) {
+
+
+
+
+function validarLoginPac(e) {
 	e.preventDefault();
 
 	const DNI = document.querySelector('#dniPaciente').value;
@@ -100,7 +100,7 @@ function validarLogin(e) {
 		if (existeDNI.passwordPaciente === password) {
 			
 
-            window.location.replace("index.html");
+            window.location.href = "../index.html"
 		} else {
 			Swal.fire({
                 icon: 'error',
