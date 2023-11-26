@@ -59,7 +59,7 @@ const motivo = document.getElementById("motivo");
 
 
 document.getElementById("turnoSeleccionado").hidden = false;
-document.getElementById("divTurno").hidden = false;
+document.getElementById("divTurno").hidden = true;
 
 function nuevoTurno(){
     console.log("ESTAMOS A TODA VELOCIDAD ;) ")
@@ -141,27 +141,14 @@ function cargarHorarios(){
                     turno.className = "turnoHorario-btn"
                     horarioTurnos.appendChild(turno);
                 }
-/*
-                //console.log(validarH);
-                const turno = document.createElement("button");
-                turno.textContent  = turnos;
-                turno.onclick = function() {
-                    // Función que se ejecutará al hacer clic en el botón
-
-                    turnoSeleccionado.textContent= this.textContent;
-                };
-                turno.className = "turnoHorario-btn"
-                horarioTurnos.appendChild(turno);*/
-
             });
-
         }
     })   
 }
 
 function validarDatos(){
 
-    const id = Date.now();
+    //const id = Date.now();
 
     const varEspecialidad = especialidades.value
 
@@ -187,7 +174,6 @@ function validarDatos(){
     }else{
         mostrarModal();
     }
-
 }
 
 function mostrarModal() {
@@ -211,6 +197,8 @@ function cerrarModal() {
     turnoSeleccionado.textContent ='';
     
     motivo.value = '';
+    //cierro el modal
+    document.getElementById("divTurno").hidden = true;
     // Cerrar el modal
     modal.style.display = "none";
 }
@@ -239,23 +227,17 @@ function confirmarTurno() {
     const varMotivo = motivo.value;
     
     const newTurno = new Turno(id,'paciente', varEspecialidad, varProfesional, varFechaTurno, varHorario, varMotivo);
-    
     Turnos.push(newTurno);
     localStorage.setItem("turnos", JSON.stringify(Turnos));
-
-
-
 
     const newUsarTurno = new UsarTurno(varProfesional, varFechaTurno, varHorario);
     turnosOcupados.push(newUsarTurno);
     localStorage.setItem("turnosOcupados", JSON.stringify(turnosOcupados));
 
-
-
-
     // Cerrar el modal después de la confirmación
     cerrarModal();
 }
+
 
 
 function mostrarModal2() {
@@ -269,7 +251,7 @@ function mostrarModal2() {
 function cerrarModal2() {
     // Obtener el modal por su ID
     var modal = document.getElementById("modal2");
-
+    document.getElementById("divTurno").hidden = true;
     // Cerrar el modal
     modal.style.display = "none";
 }
@@ -290,19 +272,47 @@ function confirmarTurno2() {
     // Cerrar el modal después de la confirmación
     cerrarModal2();
 }
-//turnoSeleccionado
-
-//Crea instancia para guardar newUser 
-//const newTurno = new Turnos(id,paciente,especialidad,medico,fecha,horario,motivo);
-
-// agrega newUser al array
-//turnosAgendados.push(newUser);
-
-//convierte a JSON y almacena en el localStorage el newUser
-//localStorage.setItem("turnos",JSON.stringify(turnosAgendados) );
 
 
+const contenedorCard = document.querySelector('#contenedorCard');
 
+//const profesionales = JSON.parse(localStorage.getItem('usuariosProfesionales'));
 
+function cargarProfesionales() {
+    let contadorTarjetas = 0; // Contador para realizar un seguimiento de las tarjetas en cada fila
 
+    profesionales.forEach(function (profesional) {
+        // Crear un nuevo div para cada tarjeta
+        let div = document.createElement('div');
+        div.className = "col-md-3 mb-4"; // Ajusta según tus necesidades
 
+        // Obtener la cadena base64 de la imagen desde el localStorage
+        let imgSrc = profesional.imagen;
+        
+         // Crear la estructura de la tarjeta
+        div.innerHTML = `
+            <div class="card" style="width: 18rem;">
+                <img src="${imgSrc}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title estilosTitulo">${profesional.nombre} ${profesional.apellido}</h5>
+                    <p class="card-text">Especialidad: ${profesional.especialidad}</p>
+                    <p class="card-text">Lunas a Viernes de 8:00 a 16:00</p>
+                </div>
+            </div>
+        `;
+
+        // Agregar la tarjeta a la fila de tarjetas
+        document.getElementById('filaTarjetas').appendChild(div);
+
+        // Aumentar el contador de tarjetas
+        contadorTarjetas++;
+
+        // Si hemos alcanzado 4 tarjetas, crear una nueva fila
+        if (contadorTarjetas === 4) {
+            document.getElementById('filaTarjetas').appendChild(document.createElement('div')); // Agregar un salto de línea (div vacío) para iniciar una nueva fila
+            contadorTarjetas = 0; // Reiniciar el contador de tarjetas para la nueva fila
+        }
+    });
+}
+
+cargarProfesionales();
