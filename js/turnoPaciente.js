@@ -56,14 +56,11 @@ const motivo = document.getElementById("motivo");
 
 
 
-document.getElementById("turnoSeleccionado").hidden = false;
+//document.getElementById("turnoSeleccionado").hidden = false;
 document.getElementById("divTurno").hidden = true;
 
 function nuevoTurno(){
-    //console.log("ESTAMOS A TODA VELOCIDAD ;) ")
     document.getElementById("divTurno").hidden = false;
-
-
 }
 
 const listaPaciente = document.getElementById("listaPaciente");
@@ -84,7 +81,7 @@ function cargarMedicos(){
 
     medicos.innerHTML = '';
 
-    console.log(especialidadSelec);
+    //console.log(especialidadSelec);
 
     medi.forEach(function(medico){
         if(medico.especialidad === especialidadSelec){
