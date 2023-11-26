@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style registro.css">
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+    <title>SAN MIGUEL CLINICA MEDICA</title>
+</head>
+<body>
+    <!------------ NAV BAR!--------------->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="../Assets/img/LOGO SMCM.png" alt="logo" width="100px">
+      </a>
+      <img src="../Assets/img/titulo del Navbar.png" alt="Clinica San Miguel" srcset="">
+      <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-5">
+          <li class="nav-item">
+            <a class=" transformar nav-link" aria-current="page" href="../index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="transformar nav-link" href="#">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="transformar nav-link" href="#">Registro</a>
+          </li>
+          <li class="nav-item">
+            <a class="transformar nav-link" href="#">Profesionales</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!-------------- FIN NAV BAR!-----------------> 
+
+<!-------------- TITULO-----------------> 
+<h1 class="titulo"><img src="../Assets/img/cooltext447933235338138.png" alt="Titulo Registro" class="imagenRegistro"></h1>
+<!-------------- FIN DEL TITULO-----------------> 
+
+<!-------------- BOTONES PARA ELEGIR SI SOS PROFESIONAL O PACIENTE-----------------> 
+<div class="container">
+    <div class="buttons">
+        <a href="#" class="btn1 btn-3 text-center" data-bs-toggle="modal" data-bs-target="#modalProfesional">Profesionales</a>
+        <a href="#" class="btn1 btn-3 text-center" data-bs-toggle="modal" data-bs-target="#modalPaciente">Pacientes</a>        
+    </div>
+</div>
+<!-------------- FIN CODIGO BOTONES PARA ELEGIR SI SOS PROFESIONAL O PACIENTE----------------->
+
+<!-- Modal -->
+<div class="modal fade" id="modalProfesional" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel">Registro Profesional</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="validarUsuario">
+          <label class="text-black fs-4">DNI <span class="parentesisDNI">(ingresar sin puntos)</span></label>
+          <input minlength="7" maxlength="8" class="form-control w-50" type="number" id="dni" oninput="this.value = this.value.replace(/[^\d]/g, '');">
+          
+          <label class="text-black fs-4">Contraseña</label>
+          <input minlength="7" maxlength="20" class="form-control w-50" type="password" id="password">
+          
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-success" id="validarLoginPro">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalPaciente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel">Registro Paciente</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="validarPaciente">
+          <label class="text-black fs-3">DNI <span class="parentesisDNI">(ingresar sin puntos)</span></label>
+          <input class="form-control w-50" type="number" oninput="this.value = this.value.replace(/[^\d]/g, '');" id="dniPaciente">
+         
+          <label class="text-black fs-3">Contraseña</label>
+          <input class="form-control w-50" type="password" id="passwordPaciente">
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
+        <button type="button" class="btn btn-success" id="validarLoginPaciente">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-------------- Fin de Modal----------------->
+
+<!-------------- FOOTER!----------------->
+
+
+<footer class="bg-light text-dark pt-5 pb-4">
+  <div class="container text-center text-md-start">
+      <div class="row text-center text-md-start">
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto">
+              <h5 class="text-uppercase mb-4 font-weight-bold text-success">
+                  Nosotros
+              </h5>
+              <hr class="mb-4" />
+              <p>
+                  San Miguel CM es una clinica privada que cuenta con
+                  los profesionales mas capacitados en el norte argentino. Desde
+                  2010
+              </p>
+          </div>
+          <div class="col-md-2 col-lg-2 col-xl-2 mc-auto-3">
+              <h5 class="text-uppercase mb-4 font-weight-bold text-success">
+                  Enlaces
+              </h5>
+              <hr class="mb-4" />
+              <p>
+                  <a href="#" class="text text-dark">Tu cuenta</a>
+              </p>
+              <p>
+                  <a href="#" class="text text-dark">Turnos</a>
+              </p>
+              <p>
+                  <a href="#" class="text text-dark">Ayuda</a>
+              </p>
+          </div>
+          <div class="col-md-2 col-lg-2 col-xl-2 mc-auto-3">
+              <h5 class="text-uppercase mb-4 font-weight-bold text-success">
+                  Redes
+              </h5>
+              <hr class="mb-4" />
+              <p>
+                  <a href="#" class="text text-dark fab fa-facebook"></a>
+                  <i>Facebook</i>
+              </p>
+              <p>
+                  <a href="#" class="text text-dark fab fa-instagram"></a>
+                  <i>Instagram</i>
+              </p>
+              <p></p>
+          </div>
+          <div class="col-md-2 col-lg-2 col-xl-2 mc-auto-3">
+              <h5 class="text-uppercase mb-4 font-weight-bold text-success">
+                  Servicios
+              </h5>
+              <hr class="mb-4" />
+              <li>
+                  <a href="#" class="text text-dark">Cardiologia</a>
+              </li>
+              <li>
+                  <a href="#" class="text text-dark">Traumatologia</a>
+              </li>
+              <li>
+                  <a href="#" class="text text-dark">Oftalmologia</a>
+              </li>
+              <li>
+                  <a href="#" class="text text-dark">Endocrinologia</a>
+              </li>
+          </div>
+          <div class="col-md-2 col-lg-2 col-xl-2 mc-auto-3">
+              <h5 class="text-uppercase mb-4 font-weight-bold text-success">
+                  Contacto
+              </h5>
+              <hr class="mb-4" />
+              <p>
+                  <li class="fas fa-home me-3"></li> <i> San Miguel de Tucuman </i>
+              </p>
+              <p></p>
+              <p>
+                  <li class="fas fa-envelope me-3"></li> <i>SMclinica@gmail.com</i>
+              </p>
+              <p>
+                  <li class="fas fa-phone me-3"></li>
+                  <i> +543815555555 </i>
+              </p>
+          </div>
+          <hr class="mb-4" />
+
+          <p class="text-center ">
+              <small>&copy; 2021 <b>Rolling Code</b> - Todos los Derechos Reservados.</small> 
+          </p>
+      </div>
+  </div>
+</footer>
+
+<!-------------- FIN DE FOOTER!----------------->
+
+<script src="../js/login.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
