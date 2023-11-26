@@ -33,6 +33,16 @@ body {
     margin: 30px;
     
   }
+  @media(max-width: 768px){
+    .contenedor-conocenos{
+    margin-top: 100px!important;
+    }
+  }
+  @media(max-width: 320px){
+    .contenedor-conocenos{
+    margin-top: 150px!important;
+    }
+  }
   h1{
     margin-left: 50px;
     font-size: 60px;
@@ -47,6 +57,7 @@ body {
     font-size: 25px;
   }
   .imagen {
+    width: 100%;
     margin-left: 50px;
     height: 400px;
     margin-right: 15px;
@@ -623,3 +634,9 @@ form,
   }
 }
 
+ @media(min-width: 1000px)
+  {.contenedorcontacto{
+  margin-left: 25%;
+  }
+  }
+ 
