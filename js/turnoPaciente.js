@@ -60,12 +60,24 @@ document.getElementById("turnoSeleccionado").hidden = false;
 document.getElementById("divTurno").hidden = true;
 
 function nuevoTurno(){
-    console.log("ESTAMOS A TODA VELOCIDAD ;) ")
+    //console.log("ESTAMOS A TODA VELOCIDAD ;) ")
     document.getElementById("divTurno").hidden = false;
 
 
 }
 
+const listaPaciente = document.getElementById("listaPaciente");
+
+function cargarPaciente(){
+    paciente.forEach(function(pacienteC){
+        const opcion = document.createElement("option");
+        opcion.text = pacienteC.apellidoPaciente +' '+  pacienteC.nombrePaciente;
+
+        listaPaciente.appendChild(opcion);
+    })
+}
+//cargo lista de pacientes
+cargarPaciente();
 
 function cargarMedicos(){
     const especialidadSelec = document.getElementById("especialidades").value;
@@ -201,6 +213,8 @@ function cerrarModal() {
     document.getElementById("divTurno").hidden = true;
     // Cerrar el modal
     modal.style.display = "none";
+
+    cargarTurnos();
 }
 
 function confirmarTurno() {
@@ -226,7 +240,9 @@ function confirmarTurno() {
 
     const varMotivo = motivo.value;
     
-    const newTurno = new Turno(id,'paciente', varEspecialidad, varProfesional, varFechaTurno, varHorario, varMotivo);
+    const nombrePaciente = listaPaciente.value || '';
+
+    const newTurno = new Turno(id,nombrePaciente, varEspecialidad, varProfesional, varFechaTurno, varHorario, varMotivo);
     Turnos.push(newTurno);
     localStorage.setItem("turnos", JSON.stringify(Turnos));
 
@@ -254,6 +270,8 @@ function cerrarModal2() {
     document.getElementById("divTurno").hidden = true;
     // Cerrar el modal
     modal.style.display = "none";
+
+    cargarTurnos()
 }
 
 function confirmarTurno2() {
@@ -281,8 +299,10 @@ const contenedorCard = document.querySelector('#contenedorCard');
 
 function cargarTurnos() {
     let turnoCont = 0; // Contador para realizar un seguimiento de las tarjetas en cada fila
-
+    document.getElementById('filaTarjetas').innerHTML ='';
     Turnos.forEach(function (turno02) {
+
+        if(turno02.paciente ===  listaPaciente.value){
         // Crear un nuevo div para cada tarjeta
         let div = document.createElement('div');
         div.className = " mb-4 col-md-6 col-lg-4 col-xl-4 col-xxl-3"; // Ajusta según tus necesidades
@@ -296,8 +316,8 @@ function cargarTurnos() {
                 <div class="card-body">
                     <h5 class="card-title estilosTitulo">Doctor: ${turno02.medico} </h5>
                     <p class="card-text">Especialidad: ${turno02.especialidad}</p>
-                    <p class="card-text">Especialidad: ${profesional.especialidad}</p>
                     <p class="card-text">Fecha y hora: ${turno02.fecha} - ${turno02.horario} hs. </p>
+                    <p class="card-text">Motivo: ${turno02.motivo}</p>
                 </div>
             </div>
         `;
@@ -313,6 +333,8 @@ function cargarTurnos() {
             document.getElementById('filaTarjetas').appendChild(document.createElement('div')); // Agregar un salto de línea (div vacío) para iniciar una nueva fila
             contadorTarjetas = 0; // Reiniciar el contador de tarjetas para la nueva fila
         }
+        }
+
     });
 }
 

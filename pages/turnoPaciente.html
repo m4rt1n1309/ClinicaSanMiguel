@@ -63,9 +63,11 @@
     <!-- turno -->
     <!-- nombre del usuario en spam -->
     <div style="margin-top:250px; margin-left:35px; display: flex; justify-content: space-around;">
-        <div>
-            <h2>Turnos para: <span id="nombrePaciente">...</span> </h2>
+        <div style="display: flex;">
+            <h2>Paciente:</h2>
+            <select id="listaPaciente"  onchange="cargarTurnos()" class="form-control " style="margin:0px 0px 0px 10px; width: 250px;"></select>
         </div>
+
         <div>
             <button onclick="nuevoTurno()">Nuevo turno</button>
         </div>

@@ -57,11 +57,21 @@
         </div>
     </nav>
 
-    <input id="fechaTurno" type="date" style="margin-top:180px;" onchange="cargarHorarios()">   
 
-    <div id="pruebaM"  style="margin: 50px;">
-        Turnos pendientes:
+    <div id="pruebaM"  style="margin:150px 0px 0px 50px;">
+        <h2>Turnos pendientes:</h2>
     </div>
+    
+    <div class="d-flex">
+        <label style="margin:20px 0px 0px 70px;">Seleccionar día:</label>
+        <input id="fechaTurno" type="date" style="margin:20px 0px 0px 20px; " onchange="">   
+    </div>
+    
+    <div class="d-flex mt-3">
+        <label style="margin:20px 0px 0px 70px;">Doctor:</label>
+        <select id="medicos" class="form-control  w-50" style="margin:14px 0px 0px 10px; "></select>
+    </div>
+    <button style="margin:20px 0px 0px 70px; border-radius: 7px;" onclick="cargarTurnos()">Buscar</button>
 
 
     <div class="container mt-4 " id="contenedorCard">
