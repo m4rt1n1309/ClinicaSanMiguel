@@ -15,7 +15,6 @@
 </head>
 <body>
     <!------------ NAV BAR!--------------->
-<<<<<<< HEAD
   <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
@@ -40,55 +39,13 @@
             <a class="transformar nav-link" href="#">Profesionales</a>
           </li>
         </ul>
-=======
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/index.html">
-          <img src="/Assets/img/LOGO SMCM.png" alt="logo" width="100px">
-        </a>
-  
-        <a href="/index.html"><img src="/Assets/img/titulo del Navbar.png" alt=""></a>
-  
-        <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-5">
-            <li class="nav-item">
-              <a class="transformar nav-link" aria-current="page" href="/index.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="transformar nav-link" href="#">Log In</a>
-            </li>
-            <li class="nav-item">
-              <a class="transformar nav-link" href="/pages/registro.html">Registro</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Nosotros
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/pages/La-Clinica.html">La Clinica</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/pages/Autoridades.html">Autoridades</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/pages/Historia.html">Historias</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/pages/Equipo.html">Equipo de trabajo</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="transformar nav-link" href="#">Profesionales</a>
-            </li>
-          </ul>
-        </div>
->>>>>>> e94b72d5e0854655a2716e94fd310b24abd0a2a2
       </div>
-    </nav>
+    </div>
+  </nav>
 <!-------------- FIN NAV BAR!-----------------> 
 
 <!-------------- TITULO-----------------> 
-<h1 class="titulo"><img src="../Assets/img/cooltext446820192355383.png" alt="Titulo Registro" class="imagenRegistro"></h1>
+<h1 class="titulo"><img src="../Assets/img/cooltext447933235338138.png" alt="Titulo Registro" class="imagenRegistro"></h1>
 <!-------------- FIN DEL TITULO-----------------> 
 
 <!-------------- BOTONES PARA ELEGIR SI SOS PROFESIONAL O PACIENTE-----------------> 
@@ -112,33 +69,16 @@
         <form id="validarUsuario">
           <label class="text-black fs-4">DNI <span class="parentesisDNI">(ingresar sin puntos)</span></label>
           <input minlength="7" maxlength="8" class="form-control w-50" type="number" id="dni" oninput="this.value = this.value.replace(/[^\d]/g, '');">
-          <label class="text-black fs-4">Nombre</label>
-          <input minlength="10" maxlength="20" class="form-control w-50" type="text" id="nombre">
-          <label class="text-black fs-4">Apellido</label>
-          <input minlength="10" maxlength="20" class="form-control w-50" type="text" id="apellido">
-          <label class="text-black fs-4" for="listaEspecialidad">Especialidad</label>
-          <select name="listaEspecialidad" id="listaEspecialidad" class="form-control w-50">
-          <option disabled selected="">Seleccione una opción:</option>
-          <option value="Cardiología">Cardiología</option>
-          <option value="Oftalmología">Oftalmología</option>
-          <option value="Traumatología">Traumatología</option>
-          <option value="Endocrinología">Endocrinología</option>
-          <option value="Otra">Otra</option>
-          </select>
-          <label class="text-black fs-4">Email</label>
-          <input minlength="7" maxlength="30" class="form-control w-50" type="email" id="email">
+          
           <label class="text-black fs-4">Contraseña</label>
           <input minlength="7" maxlength="20" class="form-control w-50" type="password" id="password">
-          <label class="text-black fs-4">Confirmar Contraseña</label>
-          <input minlength="7" maxlength="20" class="form-control w-50" type="password" id="confirmarPassword">
-          <label class="text-black fs-4">Agregue una imagen</label>
-          <input class="form-control w-50" type="file" id="imagen" onchange="mostrarVistaPrevia()">
-          <img id="preview" alt="Vista previa de la imagen">
+          
+          
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-success" id="validarRegistro">Confirmar</button>
+        <button type="button" class="btn btn-success" id="validarLoginPro">Confirmar</button>
       </div>
     </div>
   </div>
@@ -156,31 +96,15 @@
         <form id="validarPaciente">
           <label class="text-black fs-3">DNI <span class="parentesisDNI">(ingresar sin puntos)</span></label>
           <input class="form-control w-50" type="number" oninput="this.value = this.value.replace(/[^\d]/g, '');" id="dniPaciente">
-          <label class="text-black fs-3">Nombre</label>
-          <input class="form-control w-50" type="text" id="nombrePaciente">
-          <label class="text-black fs-3">Apellido</label>
-          <input class="form-control w-50" type="text" id="apellidoPaciente">
-          <label class="text-black fs-3">Obra Social</label>
-          <select name="listaObraSocial" id="obraSocial" class="form-control w-50">
-            <option disabled selected="">Seleccione una opción:</option>
-            <option value="Osde">Osde</option>
-            <option value="Prensa">Prensa</option>
-            <option value="Boreal">Boreal</option>
-            <option value="Pami">Pami</option>
-            <option value="Otra">Otra</option>
-            </select>
-          <!-- <input class="form-control w-50" type="text"> -->
-          <label class="text-black fs-3">Email</label>
-          <input class="form-control w-50" type="email" id="emailPaciente">
+         
           <label class="text-black fs-3">Contraseña</label>
           <input class="form-control w-50" type="password" id="passwordPaciente">
-          <label class="text-black fs-3">Confirmar Contraseña</label>
-          <input class="form-control w-50" type="password" id="confirmarPasswordPaciente">
+          
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
-        <button type="button" class="btn btn-success" id="validarRegistroPaciente">Confirmar</button>
+        <button type="button" class="btn btn-success" id="validarLoginPaciente">Confirmar</button>
       </div>
     </div>
   </div>
@@ -210,13 +134,13 @@
               </h5>
               <hr class="mb-4" />
               <p>
-                  <a href="/pages/Error404.html" class="text text-dark">Tu cuenta</a>
+                  <a href="#" class="text text-dark">Tu cuenta</a>
               </p>
               <p>
-                  <a href="/pages/turnoPaciente.html" class="text text-dark">Turnos</a>
+                  <a href="#" class="text text-dark">Turnos</a>
               </p>
               <p>
-                  <a href="/pages/Error404.html" class="text text-dark">Ayuda</a>
+                  <a href="#" class="text text-dark">Ayuda</a>
               </p>
           </div>
           <div class="col-md-2 col-lg-2 col-xl-2 mc-auto-3">
@@ -225,11 +149,11 @@
               </h5>
               <hr class="mb-4" />
               <p>
-                  <a href="/pages/Error404.html" class="text text-dark fab fa-facebook"></a>
+                  <a href="#" class="text text-dark fab fa-facebook"></a>
                   <i>Facebook</i>
               </p>
               <p>
-                  <a href="/pages/Error404.html" class="text text-dark fab fa-instagram"></a>
+                  <a href="#" class="text text-dark fab fa-instagram"></a>
                   <i>Instagram</i>
               </p>
               <p></p>
@@ -240,16 +164,16 @@
               </h5>
               <hr class="mb-4" />
               <li>
-                  <a href="/pages/Error404.html" class="text text-dark">Cardiologia</a>
+                  <a href="#" class="text text-dark">Cardiologia</a>
               </li>
               <li>
-                  <a href="/pages/Error404.html" class="text text-dark">Traumatologia</a>
+                  <a href="#" class="text text-dark">Traumatologia</a>
               </li>
               <li>
-                  <a href="/pages/Error404.html" class="text text-dark">Oftalmologia</a>
+                  <a href="#" class="text text-dark">Oftalmologia</a>
               </li>
               <li>
-                  <a href="/pages/Error404.html" class="text text-dark">Endocrinologia</a>
+                  <a href="#" class="text text-dark">Endocrinologia</a>
               </li>
           </div>
           <div class="col-md-2 col-lg-2 col-xl-2 mc-auto-3">
@@ -277,9 +201,10 @@
       </div>
   </div>
 </footer>
+
 <!-------------- FIN DE FOOTER!----------------->
 
-<script src="../js/registro.js"></script>
+<script src="../js/login.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
