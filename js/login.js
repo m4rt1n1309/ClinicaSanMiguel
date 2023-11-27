@@ -20,7 +20,11 @@ function validarLogin(e) {
 	const DNI = document.querySelector('#dni').value;
     console.log(DNI);
 	const password = document.querySelector('#password').value;
+  if (DNI=="00000000" && password=="00000000") {
 
+    location.href="./admin.html" ;
+  
+  }
 
 
 	if (!DNI || !password) {

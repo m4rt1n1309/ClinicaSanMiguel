@@ -131,7 +131,7 @@ function cargarHorarios(){
         let nombreComp = med.apellido +' '+  med.nombre;
         //encuentra el profesional para cargar los hoarios
         if(nombreComp == profesional.value ){
-            /*recorre los horarios para insertarlos*/
+            /recorre los horarios para insertarlos/
             med.horario.forEach(turnos => {
                     //          9:00
                 //recorro los horarios ocupados comparando con la fecha ingresada
@@ -146,13 +146,21 @@ function cargarHorarios(){
                         // Función que se ejecutará al hacer clic en el botón
 
                         turnoSeleccionado.textContent= this.textContent;
-                    };
+                        this.classList.add("turnoSeleccionado");
+
+                        const otrosTurnos = horarioTurnos.querySelectorAll(".turnoHorario-btn");
+                        otrosTurnos.forEach(function (otroTurno) {
+                            if (otroTurno !== turno) {
+                                otroTurno.classList.remove("turnoSeleccionado");
+                            }
+                    });
+                }
                     turno.className = "turnoHorario-btn"
                     horarioTurnos.appendChild(turno);
                 }
             });
-        }
-    })   
+        }
+    })   
 }
 
 function validarDatos(){

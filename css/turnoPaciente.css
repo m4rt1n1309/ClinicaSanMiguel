@@ -53,3 +53,8 @@
     padding: 20px;
     text-align: center;
 }
+.turnoSeleccionado {
+    background-color: #34db5b; /* Cambia el color de fondo al azul */
+    color: #fff; /* Cambia el color del texto a blanco */
+    /* Otros estilos que desees aplicar al horario seleccionado */
+}

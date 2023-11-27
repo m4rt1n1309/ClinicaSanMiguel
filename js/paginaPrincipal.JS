@@ -8,7 +8,7 @@ function cargarProfesionales() {
     profesionales.forEach(function (profesional) {
         // Crear un nuevo div para cada tarjeta
         let div = document.createElement('div');
-        div.className = "col-md-3 mb-4"; // Ajusta según tus necesidades
+        div.className = " mb-4 col-md-6 col-lg-4 col-xl-4 col-xxl-3"; // Ajusta según tus necesidades
 
         // Obtener la cadena base64 de la imagen desde el localStorage
         let imgSrc = profesional.imagen;
