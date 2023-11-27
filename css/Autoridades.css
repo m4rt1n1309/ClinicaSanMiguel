@@ -15,8 +15,30 @@ padding: 0;
     margin-top: 100px;
     
     text-align: center;
-    
-  }
+}
+@media(min-width: 320px)
+{.contenedor-autoridades{
+margin-top: 200px;
+}
+}
+
+@media(min-width: 375px)
+{.contenedor-autoridades{
+margin-top: 200px;
+}
+}
+
+@media(min-width: 425px)
+{.contenedor-autoridades{
+margin-top: 200px;
+}
+}
+@media(min-width: 768px)
+{.contenedor-autoridades{
+margin-top: 100px;
+}
+}
+
 
 
 

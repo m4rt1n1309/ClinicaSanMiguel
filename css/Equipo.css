@@ -49,6 +49,29 @@ img {
   width: 100%;
  
 }
+@media(min-width: 320px)
+{.Nuestro_equipo_de_trabajo{
+margin-top: 25  0px;
+}
+}
+
+@media(min-width: 375px)
+{.Nuestro_equipo_de_trabajo{
+margin-top: 200px;
+}
+}
+
+@media(min-width: 425px)
+{.Nuestro_equipo_de_trabajo{
+margin-top: 200px;
+}
+}
+@media(min-width: 768px)
+{.Nuestro_equipo_de_trabajo{
+margin-top: 150px;
+}
+}
+
 
 .Nuestro_equipo_de_trabajo p{
   padding: 40px;
