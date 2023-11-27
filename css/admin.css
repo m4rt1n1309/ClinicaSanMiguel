@@ -1,0 +1,19 @@
+body {
+    font-family: 'DM Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-image: url("../Assets/img/Fondo\ principal.jpg");
+    background-size: cover;
+    object-fit: cover;
+    background-position: center;
+}   
+
+.navbar {
+    background-color: #CDEC97! important;
+}
+
+.titulo-admin {
+    margin-top: 150px; /* Puedes ajustar este valor según sea necesario */
+    margin-left: 20px;
+}
+
+
